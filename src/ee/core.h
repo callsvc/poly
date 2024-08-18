@@ -1,17 +1,16 @@
 #pragma once
-#include <types.h>
+
+#include <unit/pc.h>
 namespace poly::ee {
     class Core {
-        Core();
     public:
-        void write8();
-        void write16();
-        void write32();
-
-
+        Core() = default;
         void reset();
 
+        u32 fetchInstruction(u32 addr) const;
+
+        void tick(u32 cycles);
     private:
-        u32 pc;
+        unit::Pc pc;
     };
 }
