@@ -1,7 +1,9 @@
-#include <ee/core.h>
+#include <cstring>
 
+#include <ee/core.h>
 namespace poly::ee {
     void Core::reset() {
+        std::memset(&gprs[0], 0, sizeof(gprs));
         // Putting the PC directly onto the stack
         pc = 0xbfc00000;
     }

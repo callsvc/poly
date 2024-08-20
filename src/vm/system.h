@@ -14,8 +14,6 @@ namespace poly::vm {
         std::mutex super{};
         ee::Core cpu{};
 
-        u32 genFrames{};
+        u32 draw{};
     };
-
-    inline System manager;
 }
