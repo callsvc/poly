@@ -5,8 +5,12 @@ target_sources(poly PRIVATE
     ee/core.h
     vm/system.cpp
     vm/system.h
-    vm/memory.cpp
-    vm/memory.h
+    uma/memory.cpp
+    uma/memory.h
+    uma/unified.cpp
+    uma/unified.h
+    sys/bios.cpp
+    sys/bios.h
     unit/pc.h
     poly.cpp
     types.h

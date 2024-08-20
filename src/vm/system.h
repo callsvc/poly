@@ -5,7 +5,7 @@
 namespace poly::vm {
     class System {
     public:
-        System() = default;
+        System();
 
         void produceFrames(u32 countFrames = 1);
 

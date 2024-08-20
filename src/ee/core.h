@@ -27,11 +27,10 @@ namespace poly::ee {
         Core() = default;
         void reset();
 
-        RegisterBlock gprs;
-
-        u32 fetchInstruction(u32 addr) const;
+        void exec();
         void tick(u32 cycles);
     private:
+        RegisterBlock gprs;
         unit::Pc pc;
     };
 }
