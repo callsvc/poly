@@ -5,9 +5,10 @@
 namespace poly::vm {
     class System {
     public:
-        System();
+        System() = default;
 
         void produceFrames(u32 countFrames = 1);
+        void initialize() const;
 
         void reset();
         void tick();

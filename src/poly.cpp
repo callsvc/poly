@@ -3,6 +3,7 @@
 #include <vm/system.h>
 int main() {
     poly::vm::System emulator{};
+    emulator.initialize();
     emulator.reset();
 
     std::thread thread([&] {
