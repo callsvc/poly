@@ -15,10 +15,10 @@ namespace poly::ee {
                 s0, s1, s2, s3, s4, s5, s6, s7,
                 t8, t9, k0, k1, gp, sp, s8, ra;
         };
+        std::array<Register, 32> regs;
         auto& operator [](auto index) {
             return regs[index];
         }
-        std::array<Register, 32> regs;
     };
 
     static_assert(sizeof(RegisterBlock) == 512);

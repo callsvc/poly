@@ -7,14 +7,13 @@ namespace poly::uma {
         Unified();
 
         template <typename T>
-        static T read(u32 phAddr) {
+        static T read(const u32 phAddr) {
             auto kernelSeg{phAddr >= 0x80000000 && phAddr < 0x9fffffff};
             if (!kernelSeg)
                 kernelSeg = phAddr >= 0xa0000000 && phAddr < 0xbfffffff;
 
             if (kernelSeg) {
-                phAddr &= 0x1fffffff;
-                const auto effectivePhAddr{0x1fffffff - phAddr};
+                const auto effectivePhAddr{phAddr & 0x3fffff};
                 return devMemory.biosMap[effectivePhAddr];
             }
             return {};
