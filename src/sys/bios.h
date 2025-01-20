@@ -1,11 +1,12 @@
 #pragma once
 
 #include <filesystem>
-namespace poly::sys {
+namespace Poly::Sys {
     class Bios {
     public:
         Bios() = default;
-        Bios(const std::filesystem::path& biosFile);
+
+        explicit Bios(const std::filesystem::path& biosFile);
 
         bool slot{};
     };

@@ -1,22 +1,22 @@
 #include <cstring>
-#include <uma/unified.h>
+#include <memobj/unified.h>
 
 #include <ee/core.h>
-namespace poly::ee {
-    void Core::reset() {
+namespace Poly::EE {
+    void Core::Reset() {
         std::memset(&gprs[0], 0, sizeof(gprs));
         // Putting the PC directly onto the stack
         pc = 0xbfc00000;
     }
-    void Core::exec() {
+    void Core::Exec() {
         const u32 fetchAddress{pc};
         pc++;
-        uma::readUma32(fetchAddress);
+        MemObj::Read32(fetchAddress);
     }
 
-    void Core::tick(u32 cycles) {
+    void Core::Tick(u32 cycles) {
         while (cycles--) {
-            exec();
+            Exec();
         }
     }
 }

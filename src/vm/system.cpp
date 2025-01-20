@@ -1,16 +1,16 @@
 #include <mutex>
 
 #include <vm/system.h>
-#include <uma/unified.h>
-
+#include <memobj/unified.h>
 #include <sys/bios.h>
-namespace poly::vm {
-    void System::produceFrames(const u32 countFrames) {
+namespace Poly::Vm {
+    void System::DoFrames(const u32 countFrames) {
         std::scoped_lock lock{super};
         draw += countFrames;
     }
-    void System::initialize() {
-        uma::devMemory.allocateBanks();
+
+    void System::Initialize() {
+        MemObj::devMemory.AllocateBanks();
         bios = std::filesystem::current_path() / "bios";
         if (!is_directory(bios))
             create_directory(bios);
@@ -22,20 +22,20 @@ namespace poly::vm {
             ++pick;
         bios = *pick;
 
-        psOs = sys::Bios{bios};
+        psOs = Sys::Bios{bios};
     }
-    void System::reset() {
-        uma::reset();
-        cpu.reset();
+    void System::Reset() {
+        MemObj::Reset();
+        cpu.Reset();
     }
 
-    void System::tick() {
+    void System::Tick() {
         if (!draw)
             return;
         if (draw) {
             std::scoped_lock lock{super};
             draw--;
         }
-        cpu.tick(32);
+        cpu.Tick(32);
     }
 }

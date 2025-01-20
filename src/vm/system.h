@@ -3,21 +3,21 @@
 
 #include <ee/core.h>
 #include <sys/bios.h>
-namespace poly::vm {
+namespace Poly::Vm {
     class System {
     public:
         System() = default;
 
-        void produceFrames(u32 countFrames = 1);
-        void initialize();
+        void DoFrames(u32 countFrames = 1);
+        void Initialize();
 
-        void reset();
-        void tick();
+        void Reset();
+        void Tick();
         std::mutex super{};
-        ee::Core cpu{};
+        EE::Core cpu{};
 
         std::filesystem::path bios;
-        sys::Bios psOs;
+        Sys::Bios psOs;
         u32 draw{};
     };
 }

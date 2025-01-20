@@ -2,11 +2,12 @@
 
 #include <array>
 #include <unit/pc.h>
-namespace poly::ee {
+namespace Poly::EE {
     union Register {
         std::array<u32, 4> u4int;
         std::array<u8, 16> u16b;
     };
+
     union RegisterBlock {
         struct {
             Register
@@ -25,12 +26,12 @@ namespace poly::ee {
     class Core {
     public:
         Core() = default;
-        void reset();
+        void Reset();
 
-        void exec();
-        void tick(u32 cycles);
+        void Exec();
+        void Tick(u32 cycles);
     private:
-        RegisterBlock gprs;
-        unit::Pc pc;
+        RegisterBlock gprs{};
+        Unit::Pc pc;
     };
 }

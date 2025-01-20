@@ -2,12 +2,12 @@
 #include <span>
 
 #include <types.h>
-namespace poly::uma {
+namespace Poly::MemObj {
     class Memory {
     public:
         Memory() = default;
-        void allocateBanks();
-        void cleanUpMemory();
+        void AllocateBanks();
+        void CleanUpMemory() const;
 
         std::span<u8> gsMap{};
         std::span<u8> biosMap{};
